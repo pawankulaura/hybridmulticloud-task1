@@ -1,5 +1,4 @@
 # This is a basic workflow that is manually triggered
-λ cat main.tf
 ##########################################################
 #Hybrid_Multi_Cloud
 #Task_1 : This below code is to create and launch Application using Terraform over the AWS cloud
