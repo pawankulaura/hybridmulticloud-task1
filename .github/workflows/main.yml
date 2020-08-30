@@ -1,7 +1,8 @@
 # This is a basic workflow that is manually triggered
+λ cat main.tf
 ##########################################################
 #Hybrid_Multi_Cloud
-#Task_1 : Have to create/launch Application using Terraform
+#Task_1 : This below code is to create and launch Application using Terraform over the AWS cloud
 #
 #1. Create the key and security group which allow the port 80.
 #2. Launch EC2 instance.
@@ -14,8 +15,8 @@
 #righteducation #rightmentor #makingindiafutureready
 #hybridmulticloud #futureofcloudcomputing #vimaldaga
 #terraform #github #s3 #cloudfront #terraform
-#pdf download:- github link: 
-#key.tf file:- github link: 
+#pdf download:- github link:
+#key.tf file:- github link:
 ################################################################
 provider "aws" {
 region = "ap-south-1"
@@ -30,7 +31,7 @@ resource "aws_key_pair" "deployer-key" {
 resource "aws_security_group" "allow_ssh_http" {
   name        = "allow_ssh_http"
   description = "Allow SSH and HTTP inbound traffic"
-  vpc_id      = vpc-ef968b87
+  vpc_id      = "vpc-ef968b87"
 
   ingress {
     description = "TLS from SSH"
@@ -69,8 +70,8 @@ resource "aws_ebs_volume" "my-ebs" {
 }
 resource "aws_volume_attachment" "volume-attach" {
  device_name = "/dev/sdf"
- volume_id = "${aws_ebs_volume.my-ebs.id}"
- instance_id = "${aws_instance.myinstance.id}"
+ volume_id = "$aws_ebs_volume.my-ebs.id"
+ instance_id = "$aws_instance.my-instance.id"
 }
 resource "aws_instance" "my-instance" {
   ami           = "ami-052c08d70def0ac62"
@@ -87,11 +88,12 @@ resource "aws_instance" "my-instance" {
                 mkfs.ext4 /dev/xvdf1
                 mount /dev/xvdf1 /var/www/html
                 cd /var/www/html
-                git clone https://github.com/visheshgargavi/hybrid-task1
-                
+                git clone https://github.com/pawankulaura/hybridmulticloud-task1
+
+
   EOF
 
   tags = {
-    Name = "task1-inst"
+    Name = "my-instance"
   }
 }
